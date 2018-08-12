@@ -30,6 +30,7 @@ export class RequestDetailsPage {
   jobRequest: any;
   form: FormGroup;
   selected_image: any = "";
+  display_image: any = "";
 
   constructor(
     private camera: Camera,
@@ -67,13 +68,15 @@ export class RequestDetailsPage {
         sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
         encodingType: this.camera.EncodingType.PNG,
         mediaType: this.camera.MediaType.PICTURE,
+        targetHeight: 500,
+        targetWidth: 500,
         allowEdit: true,
       };
 
       this.camera.getPicture(cameraOptions).then((imageData) => {
-        let base64Image = 'data:image/jpeg;base64,' + imageData;
-        if (base64Image) {
-          this.selected_image = base64Image;
+        if (imageData) {
+          this.selected_image = imageData;
+          this.display_image = 'data:image/png;base64,' + imageData;
         } else {
           console.log('Could not take picture');
         }

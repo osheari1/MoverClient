@@ -27,7 +27,7 @@
             <ion-icon name="camera"></ion-icon>
             <h3 class="button-title">{{'UPLOAD_AN_IMAGE' | translate}}</h3>
           </button>
-        <preload-image *ngIf="selected_image" [ratio]="{w:1, h:1}" [src]="selected_image" alt="image" title="Item Image">
+        <preload-image *ngIf="selected_image" [ratio]="{w:1, h:1}" [src]="display_image" alt="image" title="Item Image">
         </preload-image>
 
         <ion-item class="range-item">

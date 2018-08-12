@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../environment/environment';
 import {Camera} from '@ionic-native/camera';
-import {CameraMock} from '@ionic-native-mocks/camera';
+// import {CameraMock} from '@ionic-native-mocks/camera';
 
 //pages
 import {CalcUtilsProvider} from "../providers/calc-utils/calc-utils";
@@ -114,6 +114,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 //Angular Fire
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {DatabaseProvider} from '../providers/database/database';
 import {StorageProvider} from '../providers/storage/storage';
@@ -124,12 +125,13 @@ export function createTranslateLoader(http: HttpClient) {
 
 // Create mock camera class to allow 'camera' to be used in browser
 // REMOVE BEFORE DEPLOY
-// class CameraMock extends Camera {
-//   getPicture(options) {
-//     return new Promise( (resolve, reject) => {
-//       resolve(`TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=`); });
-//   }
-// }
+class CameraMock extends Camera {
+  getPicture(options) {
+    return new Promise((resolve, reject) => {
+      resolve(`data:image/png;base64,TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=`);
+    });
+  }
+}
 
 @NgModule({
   declarations: [
@@ -217,6 +219,7 @@ export function createTranslateLoader(http: HttpClient) {
 		}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
 		VideoPlayerModule,
 		ValidatorsModule

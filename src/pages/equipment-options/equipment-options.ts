@@ -5,6 +5,8 @@ import {data} from "./data";
 import {CalcUtilsProvider} from "../../providers/calc-utils/calc-utils";
 import {FirebaseAuthService} from "../firebase-integration/firebase-auth.service";
 import {DatabaseProvider} from "../../providers/database/database";
+import {StorageProvider} from "../../providers/storage/storage";
+
 import {TabsNavigationPage} from "../tabs-navigation/tabs-navigation";
 import * as firebase from 'firebase/app';
 
@@ -60,7 +62,7 @@ export class EquipmentOptionsPage {
     public fAuthService: FirebaseAuthService,
     public alertCtrl: AlertController,
     public db: DatabaseProvider,
-
+    public storage: StorageProvider
   ) {
     this.section = "truck";
     // Keep job request from previous page
@@ -75,10 +77,7 @@ export class EquipmentOptionsPage {
   // This occurs any time the segmment is changed for any reason
   onSegmentChanged(segmentButton: SegmentButton) {
     console.log('Segment changed', segmentButton.value, this.section);
-
     this.updateJobRequest();
-
-    console.log(this.jobRequest);
   }
 
   onSegmentSelected(segmentButton: SegmentButton) {
@@ -145,12 +144,15 @@ export class EquipmentOptionsPage {
           clientRef: userRef.ref
         });
 
+        // Extract image from data and remove
+        const image = this.jobRequest.image;
+        delete this.jobRequest.image;
+
         // Build job request data blob
-        console.log(this.jobRequest);
         let message = this.buildJobRequestMessage();
-        console.log(message);
         // Add to requestDB
         this.db.submitJobRequest(message).then(docRef => {
+          // Dismiss loading bar
           this.loading.dismiss().then(() => {
             const alert: Alert = this.alertCtrl.create({
               message: `Submitted job request ${docRef.id}`,
@@ -166,6 +168,23 @@ export class EquipmentOptionsPage {
             });
             alert.present();
           });
+
+          // Upload image to storage if one exists
+          if (image != '') {
+            this.storage.uploadJobRequestImage(
+              `${docRef.id}`,
+              image
+            ).then(() => {
+              console.log('Uploading image.');
+              console.log(image);
+            }, err => {
+              console.log(err);
+            });
+          }
+
+
+
+
         }, err => {
           console.log('Could not submit job request');
           console.log(err);
@@ -179,7 +198,6 @@ export class EquipmentOptionsPage {
     }, err => {
       console.log(this.jobRequest);
       console.log(err);
-
     });
   }
 
