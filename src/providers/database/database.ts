@@ -11,19 +11,19 @@ import 'firebase/storage';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 /*
-  Generated class for the ClientDatabaseProvider provider.
+  Generated class for the DatabaseProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ClientDatabaseProvider {
+export class DatabaseProvider {
 
   constructor(
     public afs: AngularFirestore) {
   }
 
-  createProfile(email: string, uid: string): Promise<any> {
+  createClientProfile(email: string, uid: string): Promise<any> {
     return this.afs.doc(`/clientProfile/${uid}`).set({
       email: email,
       uid: uid

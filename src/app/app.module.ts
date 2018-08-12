@@ -115,7 +115,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {ClientDatabaseProvider} from '../providers/client-database/client-database';
+import {DatabaseProvider} from '../providers/database/database';
+import {StorageProvider} from '../providers/storage/storage';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -311,7 +312,8 @@ export function createTranslateLoader(http: HttpClient) {
 		Crop,
 		EmailComposer,
     CalcUtilsProvider,
-    ClientDatabaseProvider,
+    DatabaseProvider,
+    StorageProvider,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
