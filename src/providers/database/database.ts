@@ -23,10 +23,10 @@ export class DatabaseProvider {
     public afs: AngularFirestore) {
   }
 
-  createClientProfile(email: string, uid: string): Promise<any> {
-    return this.afs.doc(`/clientProfile/${uid}`).set({
+  createClientProfile(email: string, id: string): Promise<any> {
+    return this.afs.doc(`/clientProfile/${id}`).set({
       email: email,
-      uid: uid
+      id: id
     })
   }
 
