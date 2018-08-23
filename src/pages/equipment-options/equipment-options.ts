@@ -160,6 +160,7 @@ export class EquipmentOptionsPage {
                 {
                   text: 'OK',
                   role: 'cancel',
+                  // TODO: Uncomment this
                   handler: () => {
                     this.navCtrl.setRoot(TabsNavigationPage);
                   }

@@ -11,6 +11,7 @@ import {Camera} from '@ionic-native/camera';
 // import {CameraMock} from '@ionic-native-mocks/camera';
 
 //pages
+import {PendingJobsPage} from "../pages/pending-jobs/pending-jobs";
 import {CalcUtilsProvider} from "../providers/calc-utils/calc-utils";
 import {EquipmentOptionsPage} from "../pages/equipment-options/equipment-options";
 import { RequestDetailsPage } from '../pages/request-details/request-details';
@@ -118,6 +119,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {DatabaseProvider} from '../providers/database/database';
 import {StorageProvider} from '../providers/storage/storage';
+import {CurrentJobsPage} from "../pages/current-jobs/current-jobs";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -137,6 +139,8 @@ class CameraMock extends Camera {
   declarations: [
     MyApp,
     EquipmentOptionsPage,
+    CurrentJobsPage,
+    PendingJobsPage,
     RequestDetailsPage,
     ListingPage,
     FeedPage,
@@ -215,7 +219,7 @@ class CameraMock extends Camera {
 				provide: TranslateLoader,
 				useFactory: (createTranslateLoader),
 				deps: [HttpClient]
-			}
+    },
 		}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -228,6 +232,8 @@ class CameraMock extends Camera {
   entryComponents: [
     MyApp,
     EquipmentOptionsPage,
+    CurrentJobsPage,
+    PendingJobsPage,
     RequestDetailsPage,
     ListingPage,
     FeedPage,

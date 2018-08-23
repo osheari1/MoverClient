@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-
 import { MapsPage } from '../maps/maps';
-// import { RequestDetailsPage } from '../request-details/request-details';
-// import { ListingPage } from '../listing/listing';
-import { ProfilePage } from '../profile/profile';
-import { NotificationsPage } from '../notifications/notifications';
+import {PendingJobsPage} from "../pending-jobs/pending-jobs";
+import {CurrentJobsPage} from "../current-jobs/current-jobs";
 
 // import {EquipmentOptionsPage} from "../equipment-options/equipment-options";
 
@@ -20,9 +17,9 @@ export class TabsNavigationPage {
   constructor() {
     // this.tab1Root = ListingPage;
     // this.tab1Root = RequestDetailsPage;
-    this.tab1Root = MapsPage;
+    this.tab1Root = PendingJobsPage;
     // this.tab1Root = EquipmentOptionsPage;
-    this.tab2Root = ProfilePage;
-    this.tab3Root = NotificationsPage;
+    this.tab2Root = MapsPage;
+    this.tab3Root = CurrentJobsPage;
   }
 }
