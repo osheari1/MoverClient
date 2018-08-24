@@ -48,6 +48,10 @@ export class DatabaseProvider {
     });
   }
 
+  queryJobRequestDetails(id: string): AngularFirestoreDocument<any> {
+    return this.afs.doc(`jobRequests/${id}`);
+  }
+
   queryJobRequests(queryFnc = null): AngularFirestoreCollection<any> {
     if (queryFnc != null) {
       return this.afs.collection('jobRequests', queryFnc);
@@ -55,11 +59,15 @@ export class DatabaseProvider {
     return this.afs.collection('jobRequests');
   }
 
-  lookupClientProfile2(id: string): AngularFirestoreDocument<any> {
-    return this.afs.collection('clientProfile').doc(`${id}`)
+  lookupDriverProfile(id: string): AngularFirestoreDocument<any> {
+    return this.afs.doc(`driverProfile/${id}`);
   }
 
-  getClientProfileRef(id: string): DocumentReference {
+  // lookupClientProfile2(id: string): AngularFirestoreDocument<any> {
+  //   return this.afs.collection('clientProfile').doc(`${id}`)
+  // }
+
+  static getClientProfileRef(id: string): DocumentReference {
     return firebase.firestore().collection('clientProfile').doc(`${id}`);
   }
 

@@ -11,6 +11,7 @@ import {Camera} from '@ionic-native/camera';
 // import {CameraMock} from '@ionic-native-mocks/camera';
 
 //pages
+import {JobDetailsSkeletonPage} from "../pages/job-details-skeleton/job-details-skeleton";
 import {PendingJobsPage} from "../pages/pending-jobs/pending-jobs";
 import {CalcUtilsProvider} from "../providers/calc-utils/calc-utils";
 import {EquipmentOptionsPage} from "../pages/equipment-options/equipment-options";
@@ -140,6 +141,7 @@ class CameraMock extends Camera {
     MyApp,
     EquipmentOptionsPage,
     CurrentJobsPage,
+    JobDetailsSkeletonPage,
     PendingJobsPage,
     RequestDetailsPage,
     ListingPage,
@@ -233,6 +235,7 @@ class CameraMock extends Camera {
     MyApp,
     EquipmentOptionsPage,
     CurrentJobsPage,
+    JobDetailsSkeletonPage,
     PendingJobsPage,
     RequestDetailsPage,
     ListingPage,
