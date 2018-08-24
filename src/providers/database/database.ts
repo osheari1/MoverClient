@@ -8,6 +8,7 @@ import {
 } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
+import 'firebase/firestore';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 /*
@@ -35,10 +36,10 @@ export class DatabaseProvider {
     return this.afs.collection('/jobRequests').add(data)
   }
 
-  lookupClientProfile(user): Promise<AngularFirestoreDocument<any>> {
+  lookupClientProfile(id): Promise<AngularFirestoreDocument<any>> {
     return new Promise<AngularFirestoreDocument<any>>((resolve, reject) => {
       let docRef: AngularFirestoreDocument<any> = this.afs.doc<any>(
-        `/clientProfile/${user.uid}`);
+        `/clientProfile/${id}`);
       if (docRef) {
         resolve(docRef);
       } else {
@@ -46,6 +47,22 @@ export class DatabaseProvider {
       }
     });
   }
+
+  queryJobRequests(queryFnc = null): AngularFirestoreCollection<any> {
+    if (queryFnc != null) {
+      return this.afs.collection('jobRequests', queryFnc);
+    }
+    return this.afs.collection('jobRequests');
+  }
+
+  lookupClientProfile2(id: string): AngularFirestoreDocument<any> {
+    return this.afs.collection('clientProfile').doc(`${id}`)
+  }
+
+  getClientProfileRef(id: string): DocumentReference {
+    return firebase.firestore().collection('clientProfile').doc(`${id}`);
+  }
+
 
 
 }

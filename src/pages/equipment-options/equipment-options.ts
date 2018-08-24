@@ -7,7 +7,6 @@ import {FirebaseAuthService} from "../firebase-integration/firebase-auth.service
 import {DatabaseProvider} from "../../providers/database/database";
 import {StorageProvider} from "../../providers/storage/storage";
 
-import {TabsNavigationPage} from "../tabs-navigation/tabs-navigation";
 import * as firebase from 'firebase/app';
 
 /**
@@ -138,8 +137,7 @@ export class EquipmentOptionsPage {
     // Add current user id to job request
     this.fAuthService.getCurrentUser().then(user => {
       // Compile user info
-      this.db.lookupClientProfile(user).then(userRef => {
-        console.log(userRef.ref);
+      this.db.lookupClientProfile(user.uid).then(userRef => {
         this.jobRequest = this.updateJobRequestObject({
           clientRef: userRef.ref
         });
@@ -160,10 +158,9 @@ export class EquipmentOptionsPage {
                 {
                   text: 'OK',
                   role: 'cancel',
-                  // TODO: Uncomment this
-                  handler: () => {
-                    this.navCtrl.setRoot(TabsNavigationPage);
-                  }
+                  // handler: () => {
+                  //   this.navCtrl.setRoot(TabsNavigationPage);
+                  // }
                 }
               ]
             });
