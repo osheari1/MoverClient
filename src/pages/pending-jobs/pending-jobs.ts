@@ -37,7 +37,10 @@ export class PendingJobsPage {
   goToJobRequestDetail(requestId: string) {
     this.navCtrl.push(
       JobDetailsSkeletonPage,
-      {requestId}
+      {
+        requestId,
+        pending: true
+      }
     );
   }
 

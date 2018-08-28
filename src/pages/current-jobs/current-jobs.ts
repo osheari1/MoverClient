@@ -37,7 +37,7 @@ export class CurrentJobsPage {
     console.log('ionViewDidLoad PendingJobsPage');
     this.authService.getCurrentUser().then(user => {
       this.clientId = user.uid;
-      //Get client reference
+      // Get client reference
       this.clientRef = DatabaseProvider.getClientProfileRef(this.clientId);
       this.jobAcceptCollection = this.db.queryJobAccept(
         ref => ref.where('clientRef', '==', this.clientRef)
