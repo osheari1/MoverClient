@@ -48,8 +48,16 @@ export class DatabaseProvider {
     });
   }
 
+  // queryJobDetails(path: string): AngularFirestoreDocument<any> {
+  //    return this.afs.doc(path);
+  // }
+
   queryJobRequestDetails(id: string): AngularFirestoreDocument<any> {
     return this.afs.doc(`jobRequests/${id}`);
+  }
+
+  queryJobAcceptDetails(id: string): AngularFirestoreDocument<any> {
+    return this.afs.doc(`jobAccept/${id}`);
   }
 
   queryJobRequests(queryFnc = null): AngularFirestoreCollection<any> {
@@ -57,6 +65,13 @@ export class DatabaseProvider {
       return this.afs.collection('jobRequests', queryFnc);
     }
     return this.afs.collection('jobRequests');
+  }
+
+  queryJobAccept(queryFnc = null): AngularFirestoreCollection<any> {
+    if (queryFnc != null) {
+      return this.afs.collection('jobAccept', queryFnc);
+    }
+    return this.afs.collection('jobAccept');
   }
 
   lookupDriverProfile(id: string): AngularFirestoreDocument<any> {
