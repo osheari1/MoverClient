@@ -31,7 +31,7 @@ export class JobDetailsSkeletonPage {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewDidLoad JobDetailsSkeletonPage');
+    console.log('ionViewWillEnter JobDetailsSkeletonPage');
     if (this.pending) {
       this.requestData$ = this.db.queryJobRequestDetails(this.messageData.requestId).valueChanges();
     } else {

@@ -34,7 +34,7 @@ export class CurrentJobsPage {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewDidLoad PendingJobsPage');
+    console.log('ionViewWillEnter PendingJobsPage');
     this.authService.getCurrentUser().then(user => {
       this.clientId = user.uid;
       // Get client reference
