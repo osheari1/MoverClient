@@ -72,6 +72,14 @@ page-job-details-skeleton {
       font-weight: 500;
       margin: 21px;
     }
+
+    .complete-button {
+      margin: 0;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      @include call-to-action-button-styles(color($colors, button, base), color($colors, button, contrast));
+    }
   }
 
 }
