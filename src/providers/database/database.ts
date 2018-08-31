@@ -1,6 +1,4 @@
-import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Platform} from 'ionic-angular';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
@@ -48,10 +46,6 @@ export class DatabaseProvider {
     });
   }
 
-  // queryJobDetails(path: string): AngularFirestoreDocument<any> {
-  //    return this.afs.doc(path);
-  // }
-
   queryJobRequestDetails(id: string): AngularFirestoreDocument<any> {
     return this.afs.doc(`jobRequests/${id}`);
   }
@@ -77,10 +71,6 @@ export class DatabaseProvider {
   lookupDriverProfile(id: string): AngularFirestoreDocument<any> {
     return this.afs.doc(`driverProfile/${id}`);
   }
-
-  // lookupClientProfile2(id: string): AngularFirestoreDocument<any> {
-  //   return this.afs.collection('clientProfile').doc(`${id}`)
-  // }
 
   static getClientProfileRef(id: string): DocumentReference {
     return firebase.firestore().collection('clientProfile').doc(`${id}`);

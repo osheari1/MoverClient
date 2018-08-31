@@ -11,6 +11,7 @@ import {Camera} from '@ionic-native/camera';
 // import {CameraMock} from '@ionic-native-mocks/camera';
 
 //pages
+import {CompleteJobPage} from "../pages/complete-job/complete-job";
 import {JobDetailsSkeletonPage} from "../pages/job-details-skeleton/job-details-skeleton";
 import {PendingJobsPage} from "../pages/pending-jobs/pending-jobs";
 import {CalcUtilsProvider} from "../providers/calc-utils/calc-utils";
@@ -126,22 +127,13 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-// Create mock camera class to allow 'camera' to be used in browser
-// REMOVE BEFORE DEPLOY
-class CameraMock extends Camera {
-  getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve(`data:image/png;base64,TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=`);
-    });
-  }
-}
-
 @NgModule({
   declarations: [
     MyApp,
     EquipmentOptionsPage,
     CurrentJobsPage,
     JobDetailsSkeletonPage,
+    CompleteJobPage,
     PendingJobsPage,
     RequestDetailsPage,
     ListingPage,
@@ -233,8 +225,10 @@ class CameraMock extends Camera {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
     EquipmentOptionsPage,
     CurrentJobsPage,
+    CompleteJobPage,
     JobDetailsSkeletonPage,
     PendingJobsPage,
     RequestDetailsPage,

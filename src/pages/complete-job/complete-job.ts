@@ -1,25 +1,25 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
- * Generated class for the RequestBasicJobPage page.
+ * Generated class for the CompleteJobPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
+@IonicPage()
 @Component({
-  selector: 'page-request-basic-job',
-  templateUrl: 'request-basic-job.html',
+  selector: 'page-complete-job',
+  templateUrl: 'complete-job.html',
 })
-export class RequestBasicJobPage {
+export class CompleteJobPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RequestBasicJobPage');
+    console.log('ionViewDidLoad CompleteJobPage');
   }
 
 }

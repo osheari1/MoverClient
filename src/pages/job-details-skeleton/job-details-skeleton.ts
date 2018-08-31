@@ -38,7 +38,6 @@ export class JobDetailsSkeletonPage {
       this.requestData$ = this.db.queryJobAcceptDetails(this.messageData.requestId).valueChanges();
       this.requestData$.subscribe(doc => {
         this.driverData$ = this.db.lookupDriverProfile(doc.driverId).valueChanges();
-
       });
     }
   }
